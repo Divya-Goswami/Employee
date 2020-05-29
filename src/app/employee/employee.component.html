@@ -1,0 +1,76 @@
+<mat-card>
+	<mat-card-header color="primary">
+		<h2 mat-card-title>Form Details</h2>
+	</mat-card-header>
+	
+	<form [formGroup]="demoForm" (ngSubmit)="onFormSubmit()">
+		<mat-card-content>
+
+			<input type="hidden" 
+				formControlName="id" />
+
+			<mat-label>Title </mat-label>
+			<mat-form-field [color]="text-info">
+				<mat-select placeholder="Title"
+					formControlName="title">
+					<!-- [(value)] used for two way binding  -->
+					<mat-option value="Mr">Mr</mat-option>
+					<mat-option value="Mrs">Mrs</mat-option>
+					<mat-option value="Ms">Ms</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+			<mat-label>First Name </mat-label>
+			<input matInput 
+				type="text" 
+				formControlName="first_name"
+				placeholder="First Name" />
+
+			<mat-label>Last Name </mat-label>
+			<input matInput 
+				type="text" 
+				formControlName="last_name"
+				placeholder="Last Name" />
+
+			<mat-label>Primary Address</mat-label>
+			<textarea matInput
+				formControlName="adress1"
+				placeholder="Primary Address"></textarea>
+
+
+			<mat-label>Secondary Address</mat-label>
+			<textarea matInput
+				formControlName="adress2"
+				placeholder="Secondary Address"></textarea>
+
+			<mat-label>DOB </mat-label>
+			<mat-form-field>
+				<input matInput
+					[matDatepicker]="picker"
+					placeholder="DOB"
+					formControlName="dob">
+				<mat-datepicker-toggle matSuffix
+					[for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker
+					color="accent"></mat-datepicker>
+			</mat-form-field>
+
+			<mat-label>Designation </mat-label>
+			<mat-form-field [color]="text-info">
+				<mat-select placeholder="Designation"
+					formControlName="designation">
+					<mat-option value="UI Developer">UI Developer</mat-option>
+					<mat-option value="Web Developer">Web Developer</mat-option>
+					<mat-option value="UX Developer">UX Developer</mat-option>
+				</mat-select>
+			</mat-form-field>
+
+
+			<mat-card-actions>
+				<button class="btn btn-primary" type="submit">Submit</button>
+				<button class="btn btn-primary" routerLink="/list">List</button>
+				<button mat-raised-button color="warn" (click)="onDelete()" *ngIf="id != 0">Delete</button>
+		</mat-card-actions>
+		</mat-card-content>
+</form>
+</mat-card>
